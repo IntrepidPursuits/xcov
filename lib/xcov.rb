@@ -3,6 +3,7 @@ require 'xcov/version'
 require 'xcov/manager'
 require 'xcov/options'
 require 'xcov/ignore_handler'
+require 'xcov/include_handler'
 require 'xcov/error_handler'
 require 'xcov/coveralls_handler'
 require 'xcov/slack_poster'
@@ -21,6 +22,7 @@ module Xcov
 
     attr_accessor :config
     attr_accessor :ignore_handler
+    attr_accessor :include_handler
     attr_accessor :project
 
     def project=(value)

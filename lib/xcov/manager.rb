@@ -18,8 +18,9 @@ module Xcov
       FastlaneCore::Project.detect_projects(options)
       Xcov.project = FastlaneCore::Project.new(options)
 
-      # Set ignored files handler
+      # Set included/ignored file handlers
       Xcov.ignore_handler = IgnoreHandler.new
+      Xcov.include_handler = IncludeHandler.new
 
       # Print summary
       FastlaneCore::PrintTable.print_values(config: options, hide_keys: [:slack_url], title: "Summary for xcov #{Xcov::VERSION}")

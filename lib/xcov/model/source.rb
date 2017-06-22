@@ -18,15 +18,14 @@ module Xcov
       @coverage = coverage
       @functions = functions
       @ignored = Xcov.ignore_handler.should_ignore_file_at_path(location)
+      @included = Xcov.include_handler.should_include_file_at_path(location)
       @displayable_coverage = self.create_displayable_coverage
       @coverage_color = self.create_coverage_color
       @id = Source.create_id(name)
       @type = Source.type(name)
       @lines = lines
 
-      if @ignored
-        UI.message "Ignoring #{name} coverage".yellow
-      end
+      UI.message "Ignoring #{name} coverage".yellow if @ignored || !@included
     end
 
     def print_description

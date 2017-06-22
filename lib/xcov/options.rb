@@ -153,6 +153,15 @@ module Xcov
           optional: true
         ),
 
+        # Inclusion options
+        FastlaneCore::ConfigItem.new(
+          key: :include_file_path,
+          short_option: "-n",
+          env_name: "XCOV_INCLUDE_FILE_PATH",
+          description: "Relative or absolute path to the file containing the list of included files",
+          default_value: File.join(containing, ".xcovinclude")
+        ),
+
         # Exclusion options
         FastlaneCore::ConfigItem.new(
           key: :ignore_file_path,
