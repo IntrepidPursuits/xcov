@@ -25,7 +25,10 @@ module Xcov
       @type = Source.type(name)
       @lines = lines
 
-      UI.message "Ignoring #{name} coverage".yellow if @ignored || !@included
+      @ignored = @ignored || !@included
+
+      UI.message "Including #{name} coverage".yellow if @included
+      UI.message "Ignoring #{name} coverage".red if @ignored 
     end
 
     def print_description
